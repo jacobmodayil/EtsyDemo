@@ -11,9 +11,21 @@
 		<h3><%= @listing.name %></h3>
 		<p><%= number_to_currency@listing.price %></p>
 		<p><%= @listing.description %></p>
+		<div class="star-rating"data-score= <%= review.rating %> ></div>
 	</div>
 </div>
 
 
 <%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-link" %> |
 <%= link_to 'Back', listings_path, class: "btn btn-link" %>
+
+<script>
+$('.star-rating').raty({
+path: 'EtsyDemo/app/views/', 
+readOnly: true,
+	score: function()
+		{
+		return $(this).attr('data-score');
+		}
+});
+</script>
